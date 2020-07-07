@@ -1,6 +1,15 @@
 {
-    "name": "nikitovskij/php-project-lvl1",
+    "name": "nikitovskij/php-brain-games",
+    "type": "library",
     "description": "brain games",
+    "license": "MIT",
+    "homepage": "https://github.com/nikitovskij/php-brain-games",
+    "authors": [
+        {
+            "name": "nikitovskij",
+            "email": "nbaranovsky24@gmail.com"
+        }
+    ],
     "bin": [
         "bin/brain-games"
     ],
