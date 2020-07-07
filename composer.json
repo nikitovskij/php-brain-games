@@ -1,5 +1,8 @@
 {
     "name": "nikitovskij/php-project-lvl1",
     "description": "brain games",
+    "bin": [
+        "bin/brain-games"
+    ],
     "require": {}
 }
