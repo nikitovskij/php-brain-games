@@ -20,7 +20,6 @@ function run()
     
     $step = 0;
     while ($step < 3) {
-
         $guessingNumber = rand($start = 0, $end = 1000);
         $isEvenNumber = isEven($guessingNumber);
 
