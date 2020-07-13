@@ -4,6 +4,7 @@ namespace BrainGames\GameCore;
 
 use function BrainGames\Games\EvenGame\{generateEvenGameQuestion, checkEvenGameAnswer, getCorrectEvenGameAnswer};
 use function BrainGames\Games\CalcGame\{generateCalGameQuestion, checkCalcGameAnswer, getCorrectCalcGameAnswer};
+use function BrainGames\Games\GcdGame\{generateGcdGameQuestion, checkGcdGameAnswer, getCorrectGcdGameAnswer};
 use function cli\line;
 use function cli\prompt;
 
@@ -37,7 +38,8 @@ function generateGameQuestion($nameOfTheGame)
 {
     $gameQuestion = [
         'brain-even' => fn() => generateEvenGameQuestion(),
-        'brain-calc' => fn() => generateCalGameQuestion()
+        'brain-calc' => fn() => generateCalGameQuestion(),
+        'brain-gcd' => fn() => generateGcdGameQuestion()
     ];
 
     return $gameQuestion[$nameOfTheGame]();
@@ -48,6 +50,7 @@ function isAnswerCorrect($nameOfTheGame, $gameQuestion, $playerAnswer)
     $isAnswerCorrect = [
         'brain-even' => fn($question, $answer) => checkEvenGameAnswer($question, $answer),
         'brain-calc' => fn($question, $answer) => checkCalcGameAnswer($question, $answer),
+        'brain-gcd' => fn($question, $answer) => checkGcdGameAnswer($question, $answer),
     ];
 
     return $isAnswerCorrect[$nameOfTheGame]($gameQuestion, $playerAnswer);
@@ -58,6 +61,7 @@ function correctAnswer($nameOfTheGame, $gameQuestion)
     $correctAnswer = [
         'brain-even' => fn($question) => getCorrectEvenGameAnswer($question),
         'brain-calc' => fn($question) => getCorrectCalcGameAnswer($question),
+        'brain-gcd' => fn($question) => getCorrectGcdGameAnswer($question),
     ];
 
     return $correctAnswer[$nameOfTheGame]($gameQuestion);
@@ -67,7 +71,8 @@ function gameRules($nameOfTheGame)
 {
     $gamesRules = [
         'brain-even' => 'Answer "yes" if the number is even, otherwise answer "no".' . PHP_EOL,
-        'brain-calc' => 'What is the result of the expression?' . PHP_EOL
+        'brain-calc' => 'What is the result of the expression?' . PHP_EOL,
+        'brain-gcd' => 'Find the greatest common divisor of given numbers.' . PHP_EOL,
     ];
 
     return line($gamesRules[$nameOfTheGame]);
