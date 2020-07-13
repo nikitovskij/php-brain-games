@@ -27,6 +27,7 @@
         "phpcs": "phpcs"
     },
     "require": {
+        "php": "7.4",
         "wp-cli/php-cli-tools": "^0.11.11"
     },
     "require-dev": {
