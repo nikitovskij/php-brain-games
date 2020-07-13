@@ -4,3 +4,6 @@
 
 ## Brain Games: Even number
 [![asciicast](https://asciinema.org/a/js6JHCCcToSLFowN4o9nMxl5W.svg)](https://asciinema.org/a/js6JHCCcToSLFowN4o9nMxl5W)
+
+## Brain Games: Calc
+[![asciicast](https://asciinema.org/a/ESW4Z1KUdrswEgh5jbayrTzKC.svg)](https://asciinema.org/a/ESW4Z1KUdrswEgh5jbayrTzKC)
