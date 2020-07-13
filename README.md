@@ -4,3 +4,6 @@
 
 ## Brain Games: Even number
 [![asciicast](https://asciinema.org/a/js6JHCCcToSLFowN4o9nMxl5W.svg)](https://asciinema.org/a/js6JHCCcToSLFowN4o9nMxl5W)
+
+## Brain Games: Gcd number
+[![asciicast](https://asciinema.org/a/UL2bLQ4It8S5F98tD2IMxLdIC.svg)](https://asciinema.org/a/UL2bLQ4It8S5F98tD2IMxLdIC)
