@@ -9,18 +9,10 @@ function generateCalGameQuestion($start = 0, $end = 10)
     $secondNum = rand($start, $end);
     $symbol = $symbols[array_rand($symbols)];
 
-    return "{$firstNum} {$symbol} {$secondNum}";
-}
+    $question = "{$firstNum} {$symbol} {$secondNum}";
+    $correctAnswer = calcMathExpression($question);
 
-function checkCalcGameAnswer($mathExpression, $playerAnswer)
-{
-    $result = calcMathExpression($mathExpression);
-    return $result == $playerAnswer;
-}
-
-function getCorrectCalcGameAnswer($gameQuestionNum)
-{
-    return calcMathExpression($gameQuestionNum);
+    return [$question, $correctAnswer];
 }
 
 function calcMathExpression($mathExpression)
