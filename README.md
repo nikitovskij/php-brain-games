@@ -10,3 +10,6 @@
 
 ## Brain Games: Gcd
 [![asciicast](https://asciinema.org/a/UL2bLQ4It8S5F98tD2IMxLdIC.svg)](https://asciinema.org/a/UL2bLQ4It8S5F98tD2IMxLdIC)
+
+## Brain Games: Progression
+[![asciicast](https://asciinema.org/a/zM9LJyQdTskGN0BeoWH05lnuk.svg)](https://asciinema.org/a/zM9LJyQdTskGN0BeoWH05lnuk)
