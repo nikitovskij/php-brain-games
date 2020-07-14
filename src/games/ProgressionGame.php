@@ -26,4 +26,3 @@ function getProgression($initNum, $numsInProgression)
 
     return $progression;
 }
-
