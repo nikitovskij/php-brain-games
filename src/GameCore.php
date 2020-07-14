@@ -2,10 +2,10 @@
 
 namespace BrainGames\GameCore;
 
-use function BrainGames\Games\EvenGame\{generateEvenGameQuestion, checkEvenGameAnswer, getCorrectEvenGameAnswer};
-use function BrainGames\Games\CalcGame\{generateCalGameQuestion, checkCalcGameAnswer, getCorrectCalcGameAnswer};
-use function BrainGames\Games\GcdGame\{generateGcdGameQuestion, checkGcdGameAnswer, getCorrectGcdGameAnswer};
-use function BrainGames\Games\ProgressionGame\{generateProgressionGameQuestion};
+use function BrainGames\Games\EvenGame\generateEvenGameQuestion;
+use function BrainGames\Games\CalcGame\generateCalGameQuestion;
+use function BrainGames\Games\GcdGame\generateGcdGameQuestion;
+use function BrainGames\Games\ProgressionGame\generateProgressionGameQuestion;
 use function cli\line;
 use function cli\prompt;
 
