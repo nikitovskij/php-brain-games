@@ -15,7 +15,8 @@
         "bin/brain-even",
         "bin/brain-calc",
         "bin/brain-gcd",
-        "bin/brain-progression"
+        "bin/brain-progression",
+        "bin/brain-prime"
     ],
     "autoload": {
         "files": [
@@ -24,6 +25,7 @@
             "src/games/CalcGame.php",
             "src/games/GcdGame.php",
             "src/games/ProgressionGame.php",
+            "src/games/PrimeGame.php",
             "src/GameCore.php"
         ]
     },

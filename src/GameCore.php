@@ -6,6 +6,7 @@ use function BrainGames\Games\EvenGame\generateEvenGameQuestion;
 use function BrainGames\Games\CalcGame\generateCalGameQuestion;
 use function BrainGames\Games\GcdGame\generateGcdGameQuestion;
 use function BrainGames\Games\ProgressionGame\generateProgressionGameQuestion;
+use function BrainGames\Games\PrimeGame\generatePrimeGameQuestion;
 use function cli\line;
 use function cli\prompt;
 
@@ -43,6 +44,7 @@ function generateGameQuestion($nameOfTheGame)
         'brain-calc'        => fn() => generateCalGameQuestion(),
         'brain-gcd'         => fn() => generateGcdGameQuestion(),
         'brain-progression' => fn() => generateProgressionGameQuestion(),
+        'brain-prime'       => fn() => generatePrimeGameQuestion(),
     ];
 
     return $gameQuestion[$nameOfTheGame]();
@@ -55,6 +57,7 @@ function gameRules($nameOfTheGame)
         'brain-calc'        => 'What is the result of the expression?' . PHP_EOL,
         'brain-gcd'         => 'Find the greatest common divisor of given numbers.' . PHP_EOL,
         'brain-progression' => 'What number is missing in the progression?' . PHP_EOL,
+        'brain-prime'       => 'Answer "yes" if given number is prime. Otherwise answer "no".' . PHP_EOL,
     ];
 
     return line($gamesRules[$nameOfTheGame]);
