@@ -13,3 +13,6 @@
 
 ## Brain Games: Progression
 [![asciicast](https://asciinema.org/a/zM9LJyQdTskGN0BeoWH05lnuk.svg)](https://asciinema.org/a/zM9LJyQdTskGN0BeoWH05lnuk)
+
+## Brain Games: Prime
+[![asciicast](https://asciinema.org/a/w2W6YNhloze76gwgdR3RAxZ4L.svg)](https://asciinema.org/a/w2W6YNhloze76gwgdR3RAxZ4L)
