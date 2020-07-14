@@ -5,28 +5,30 @@ namespace BrainGames\GameCore;
 use function BrainGames\Games\EvenGame\{generateEvenGameQuestion, checkEvenGameAnswer, getCorrectEvenGameAnswer};
 use function BrainGames\Games\CalcGame\{generateCalGameQuestion, checkCalcGameAnswer, getCorrectCalcGameAnswer};
 use function BrainGames\Games\GcdGame\{generateGcdGameQuestion, checkGcdGameAnswer, getCorrectGcdGameAnswer};
+use function BrainGames\Games\ProgressionGame\{generateProgressionGameQuestion};
 use function cli\line;
 use function cli\prompt;
+
+const NUM_OF_GAME_QUESTIONS = 3;
 
 function run($nameOfTheGame)
 {
     line('Welcome to the Brain Games!');
     gameRules($nameOfTheGame);
-    $playerName = prompt('May I have your name?', false, ' ');
+    $playerName = askPlayerName();
     playerGreeting($playerName);
 
     $step = 0;
-    while ($step < 3) {
-        $gameQuestion =  generateGameQuestion($nameOfTheGame);
+    while ($step < NUM_OF_GAME_QUESTIONS) {
+        [$gameQuestion, $correctAnswer] = generateGameQuestion($nameOfTheGame);
+        
         line("Question: %s", $gameQuestion);
         $playerAnswer = prompt('Your answer');
 
-        $isAnswerCorrect = isAnswerCorrect($nameOfTheGame, $gameQuestion, $playerAnswer);
-        if ($isAnswerCorrect) {
+        if ($correctAnswer == $playerAnswer) {
             rightAnswerMsg();
             $step++;
         } else {
-            $correctAnswer = correctAnswer($nameOfTheGame, $gameQuestion);
             wrongAnswerMsg($playerName, $playerAnswer, $correctAnswer);
             return;
         }
@@ -37,48 +39,28 @@ function run($nameOfTheGame)
 function generateGameQuestion($nameOfTheGame)
 {
     $gameQuestion = [
-        'brain-even' => fn() => generateEvenGameQuestion(),
-        'brain-calc' => fn() => generateCalGameQuestion(),
-        'brain-gcd' => fn() => generateGcdGameQuestion()
+        'brain-even'        => fn() => generateEvenGameQuestion(),
+        'brain-calc'        => fn() => generateCalGameQuestion(),
+        'brain-gcd'         => fn() => generateGcdGameQuestion(),
+        'brain-progression' => fn() => generateProgressionGameQuestion(),
     ];
 
     return $gameQuestion[$nameOfTheGame]();
 }
 
-function isAnswerCorrect($nameOfTheGame, $gameQuestion, $playerAnswer)
-{
-    $isAnswerCorrect = [
-        'brain-even' => fn($question, $answer) => checkEvenGameAnswer($question, $answer),
-        'brain-calc' => fn($question, $answer) => checkCalcGameAnswer($question, $answer),
-        'brain-gcd' => fn($question, $answer) => checkGcdGameAnswer($question, $answer),
-    ];
-
-    return $isAnswerCorrect[$nameOfTheGame]($gameQuestion, $playerAnswer);
-}
-
-function correctAnswer($nameOfTheGame, $gameQuestion)
-{
-    $correctAnswer = [
-        'brain-even' => fn($question) => getCorrectEvenGameAnswer($question),
-        'brain-calc' => fn($question) => getCorrectCalcGameAnswer($question),
-        'brain-gcd' => fn($question) => getCorrectGcdGameAnswer($question),
-    ];
-
-    return $correctAnswer[$nameOfTheGame]($gameQuestion);
-}
-
 function gameRules($nameOfTheGame)
 {
     $gamesRules = [
-        'brain-even' => 'Answer "yes" if the number is even, otherwise answer "no".' . PHP_EOL,
-        'brain-calc' => 'What is the result of the expression?' . PHP_EOL,
-        'brain-gcd' => 'Find the greatest common divisor of given numbers.' . PHP_EOL,
+        'brain-even'        => 'Answer "yes" if the number is even, otherwise answer "no".' . PHP_EOL,
+        'brain-calc'        => 'What is the result of the expression?' . PHP_EOL,
+        'brain-gcd'         => 'Find the greatest common divisor of given numbers.' . PHP_EOL,
+        'brain-progression' => 'What number is missing in the progression?' . PHP_EOL,
     ];
 
     return line($gamesRules[$nameOfTheGame]);
 }
 
-function playerName()
+function askPlayerName()
 {
     return prompt('May I have your name?', false, ' ');
 }
