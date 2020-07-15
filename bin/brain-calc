@@ -11,6 +11,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use function BrainGames\GameCore\run;
+use function BrainGames\Games\CalcGame\run;
 
-run('brain-calc');
+run();

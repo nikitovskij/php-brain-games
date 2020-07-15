@@ -2,34 +2,41 @@
 
 namespace BrainGames\Games\CalcGame;
 
-function generateCalGameQuestion($start = 0, $end = 10)
+use function BrainGames\GameCore\run as start;
+
+const CALC_SYMBOLS = ['+', '-', '*'];
+
+function run()
 {
-    $symbols = ['+', '-', '*'];
-    $firstNum = rand($start, $end);
-    $secondNum = rand($start, $end);
-    $symbol = $symbols[array_rand($symbols)];
+    $gameRule = 'What is the result of the expression?' . PHP_EOL;
 
-    $question = "{$firstNum} {$symbol} {$secondNum}";
-    $correctAnswer = calcMathExpression($question);
-
-    return [$question, $correctAnswer];
+    return start($gameRule, function () {
+        return generateCalGameQuestion();
+    });
 }
 
-function calcMathExpression($mathExpression)
+function generateCalGameQuestion()
 {
-    [$firstNum, $sign, $secondNum] = explode(' ', $mathExpression);
+    $firstOperand = rand(0, 10);
+    $secondOperand = rand(0, 10);
+    $operant = CALC_SYMBOLS[rand(0, 2)];
 
+    $question = "{$firstOperand} {$operant} {$secondOperand}";
+    $correctAnswer = calcMathExpression($firstOperand, $secondOperand, $operant);
+
+    return [$question, (string) $correctAnswer];
+}
+
+function calcMathExpression($firstNum, $secondNum, $sign)
+{
     switch ($sign) {
         case "-":
-            $result = $firstNum - $secondNum;
-            break;
+            return $firstNum - $secondNum;
         case "+":
-            $result = $firstNum + $secondNum;
-            break;
+            return $firstNum + $secondNum;
         case "*":
-            $result = $firstNum * $secondNum;
-            break;
+            return $firstNum * $secondNum;
+        default:
+            throw new \Exception("Operator does not exist.");
     }
-
-    return $result;
 }
