@@ -7,6 +7,7 @@ use function cli\line;
 use function cli\prompt;
 
 //TODO: choice non-existing number of game
+//TODO: fix start()
 function start()
 {
     line('Welcome to the Brain Games!');
@@ -16,7 +17,7 @@ function start()
     $choice = prompt('Your choice');
     line('------------------------------' . PHP_EOL);
     $nameOfTheGame = gameToPlay($choice);
-    run($nameOfTheGame);
+    // run($nameOfTheGame);
 }
 
 function listOfTheGames()
