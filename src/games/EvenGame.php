@@ -2,9 +2,19 @@
 
 namespace BrainGames\Games\EvenGame;
 
-function generateEvenGameQuestion($start = 0, $end = 100)
+use function BrainGames\GameCore\run as start;
+
+function run()
 {
-    $question = rand($start, $end);
+    $gameRule = 'Answer "yes" if the number is even, otherwise answer "no".' . PHP_EOL;
+    return start($gameRule, function () {
+        return generateEvenGameQuestion();
+    });
+}
+
+function generateEvenGameQuestion()
+{
+    $question = rand(0, 100);
     $correctAnswer = isEven($question) ? 'yes' : 'no';
 
     return [$question, $correctAnswer];
