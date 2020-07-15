@@ -6,10 +6,14 @@ use function BrainGames\GameCore\run as start;
 
 function run()
 {
-    $gameRule = 'Answer "yes" if the number is even, otherwise answer "no".' . PHP_EOL;
-    return start($gameRule, function () {
+    return start(gameRule(), function () {
         return generateEvenGameQuestion();
     });
+}
+
+function gameRule()
+{
+    return 'Answer "yes" if the number is even, otherwise answer "no".' . PHP_EOL;
 }
 
 function generateEvenGameQuestion()

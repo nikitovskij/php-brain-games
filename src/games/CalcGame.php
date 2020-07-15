@@ -8,11 +8,14 @@ const CALC_SYMBOLS = ['+', '-', '*'];
 
 function run()
 {
-    $gameRule = 'What is the result of the expression?' . PHP_EOL;
-
-    return start($gameRule, function () {
+    return start(gameRule(), function () {
         return generateCalGameQuestion();
     });
+}
+
+function gameRule()
+{
+    return 'What is the result of the expression?' . PHP_EOL;
 }
 
 function generateCalGameQuestion()
