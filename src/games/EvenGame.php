@@ -4,16 +4,11 @@ namespace BrainGames\Games\EvenGame;
 
 use function BrainGames\GameCore\run as start;
 
+const GAME_RULE = 'Answer "yes" if the number is even, otherwise answer "no".' . PHP_EOL;
+
 function run()
 {
-    return start(gameRule(), function () {
-        return generateEvenGameQuestion();
-    });
-}
-
-function gameRule()
-{
-    return 'Answer "yes" if the number is even, otherwise answer "no".' . PHP_EOL;
+    return start(GAME_RULE, fn () => generateEvenGameQuestion());
 }
 
 function generateEvenGameQuestion()

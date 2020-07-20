@@ -5,6 +5,8 @@ namespace BrainGames\GameCore;
 use function cli\line;
 use function cli\prompt;
 
+const NUM_OF_GAME_ROUNDS = 3;
+
 function run($gameRule, $gameQuestionGenerator)
 {
     line('Welcome to the Brain Games!');
@@ -12,20 +14,21 @@ function run($gameRule, $gameQuestionGenerator)
     $playerName = prompt('May I have your name?', false, ' ');
     line("Hello, %s!" . PHP_EOL, $playerName);
 
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < NUM_OF_GAME_ROUNDS; $i++) {
         [$question, $correctAnswer] = $gameQuestionGenerator();
 
         line("Question: %s", $question);
         $playerAnswer = prompt('Your answer');
 
         if ($correctAnswer !== $playerAnswer) {
-            return wrongAnswerMsg($playerName, $playerAnswer, $correctAnswer);
+            wrongAnswerMsg($playerName, $playerAnswer, $correctAnswer);
+            return;
         }
 
         line('Correct!');
     }
 
-    return line('Congratulations, %s!', $playerName);
+    line('Congratulations, %s!', $playerName);
 }
 
 function wrongAnswerMsg($playerName, $wrongAnswer, $correctAnswer)

@@ -4,30 +4,23 @@ namespace BrainGames\Games\PrimeGame;
 
 use function BrainGames\GameCore\run as start;
 
+const GAME_RULE = 'Answer "yes" if given number is prime. Otherwise answer "no".' . PHP_EOL;
+
 function run()
 {
-    return start(gameRule(), function () {
-        return generatePrimeGameQuestion();
-    });
-}
-
-function gameRule()
-{
-    return 'Answer "yes" if given number is prime. Otherwise answer "no".' . PHP_EOL;
+    return start(GAME_RULE, fn () => generatePrimeGameQuestion());
 }
 
 function generatePrimeGameQuestion()
 {
-    $guessingNumQuestion = rand(0, 100);
-    $correctAnswer = isPrimeNum($guessingNumQuestion) ? 'yes' : 'no';
+    $question = rand(0, 100);
+    $correctAnswer = isPrimeNum($question) ? 'yes' : 'no';
 
-    return [$guessingNumQuestion, (string) $correctAnswer];
+    return [$question, $correctAnswer];
 }
 
 function isPrimeNum($number)
 {
-    $number = abs($number);
-
     if ($number < 2) {
         return false;
     }

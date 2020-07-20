@@ -4,16 +4,11 @@ namespace BrainGames\Games\GcdGame;
 
 use function BrainGames\GameCore\run as start;
 
+const GAME_RULE = 'Find the greatest common divisor of given numbers.' . PHP_EOL;
+
 function run()
 {
-    return start(gameRule(), function () {
-        return generateGcdGameQuestion();
-    });
-}
-
-function gameRule()
-{
-    return 'Find the greatest common divisor of given numbers.' . PHP_EOL;
+    return start(GAME_RULE, fn () => generateGcdGameQuestion());
 }
 
 function generateGcdGameQuestion()
@@ -33,5 +28,5 @@ function findGcd($firstNum, $secondNum)
         return $firstNum;
     }
 
-    return ($firstNum % $secondNum) ? findGcd($secondNum, $firstNum % $secondNum) : $secondNum;
+    return findGcd($secondNum, $firstNum % $secondNum);
 }
